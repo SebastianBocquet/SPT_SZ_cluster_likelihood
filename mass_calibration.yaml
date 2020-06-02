@@ -1,0 +1,56 @@
+name: mass_calibration
+version: 0
+purpose: Compute likelihood for mass calibration of 2500d SPT-SZ clusters
+interface: mass_calibration_interface.py
+attribution: [Sebastian Bocquet]
+cite:
+  - "McDonald et al. 2013, https://arxiv.org/abs/1305.2915"
+  - "McDonald et al. 2017, https://arxiv.org/abs/1702.05094"
+  - "Schrabback et al. 2018, https://arxiv.org/abs/1611.03866"
+  - "Dietrich et al. 2019, https://arxiv.org/abs/1711.05344"
+  - "Bocquet et al. 2019, https://arxiv.org/abs/1812.01679"
+
+assumptions:
+  - wCDM cosmology with w(z) = w_0 + w_a z/(1+z)
+  - spatial flatness
+
+params:
+  # What to compute
+  doWL: (bool) mass calibration from weak lensing
+  doYx: (bool) mass calibration from Yx
+  doMgas: (bool) mass calibration from Mgas
+  SZmPivot: (float) pivot point of SZ mor relation [Msun/h]
+  XraymPivot: (float) pivot point of X-ray mor relation [Msun/h]
+  mcType: (string) `Duffy08` or `DK15`
+  surveyCutSZ: (list of two float) lower and upper limit in xi
+  surveyCutRedshift: (list of two float) lower and upper limit in redshift
+  NPROC: (int) number of python multiprocessing threads. 0 for no,
+  multiprocessing. Set to 0, 2, or 4.
+  SPTdatafile: (path) file with survey details
+  SPTcatalogfile: (path) catalog file
+  WLsimcalibfile: (path) WL systematics file
+
+inputs:
+  cosmological_parameters:
+    omega_m: (float) matter density fraction of critical
+    omega_lambda: (float) dark energy density fraction of critical
+    h: (float) Hubble constant
+    w0: (float) dark energy equation of state
+    wa: (float) dark energy equation of state evolution
+    # These are only needed for DK15 c-M relation
+    omega_b: (float) baryon density fraction of critical
+    ns: (float) scalar spectral index
+    sigma8: (float) rms fluctuations in matter power spectrum
+
+  mor_parameters:
+    [SZ scaling relation parameters]
+    [X-ray scaling relation parameters]
+    [WL calibration parameters]
+    [Correlation coefficients]
+
+  HMF:
+    [halo mass function]
+
+outputs:
+  likelihoods:
+    mass_calibration_like: (float) ln-likelihood

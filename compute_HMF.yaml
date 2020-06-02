@@ -1,0 +1,31 @@
+name: compute_HMF
+version: 0
+purpose: Compute the Tinker halo mass function for (critical) spherical overdensity
+interface: compute_HMF_interface.py
+attribution: [Sebastian Bocquet]
+cite:
+  - "Tinker et al. 2008, https://arxiv.org/abs/0803.2706"
+
+assumptions:
+  - nuwCDM cosmology with w(z) = w_0 + w_a z/(1+z)
+  - spatial flatness
+
+params:
+  recalc_HMF: (bool) re-compute HMF at each step. Set to False if you fixed
+  cosmology and want to save some time (default is True)
+  save_HMF_to_disk: (bool) Save HMF.pkl to disk (default is False)
+  Deltacrit: (float) Critical density wrt which to compute HMF (default 500.)
+
+inputs:
+  cosmological_parameters:
+    omega_m: (float) matter density fraction of critical
+    omega_lambda: (float) dark energy density fraction of critical
+    omega_nu: (float) neutrino density fraction of cricical
+    w0: (float) dark energy equation of state
+    wa: (float) dark energy equation of state evolution
+  matter_power_lin:
+    z: (array-like) redshift
+    k_h: (array-like) wavenumber
+    p_k: (array-like) linear matter power spectrum
+outputs:
+  HMF: halo mass function

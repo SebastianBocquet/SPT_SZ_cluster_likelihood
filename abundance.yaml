@@ -1,0 +1,37 @@
+name: abundance
+version: 0
+purpose: Compute likelihood of 2500d SPT-SZ cluster abundance
+interface: abundance_interface.py
+attribution: [Sebastian Bocquet]
+cite:
+  - "Bleem et al. 2015, https://arxiv.org/abs/1409.0850"
+  - "de Haan et al. 2016, https://arxiv.org/abs/1603.06522"
+  - "Bocquet et al. 2019, https://arxiv.org/abs/1812.01679"
+
+assumptions:
+  - wCDM cosmology with w(z) = w_0 + w_a z/(1+z)
+  - spatial flatness
+
+params:
+  NPROC: (int) number of python multiprocessing threads. 0 for no,
+  multiprocessing. Set to 0, 2, or 4.
+  SZmPivot: (float) pivot point of SZ observable--mass relation [Msun/h]
+  surveyCutSZ: (list of two float) lower and upper limit in xi
+  surveyCutRedshift: (list of two float) lower and upper limit in redshift
+  SPTdatafile: (path) file with survey details
+  SPTcatalogfile: (path) catalog file
+
+inputs:
+  cosmological_parameters:
+    omega_m: (float) matter density fraction of critical
+    omega_lambda: (float) dark energy density fraction of critical
+    w0: (float) dark energy equation of state
+    wa: (float) dark energy equation of state evolution
+  mor_parameters:
+    SZ scaling relation parameters
+  HMF:
+    halo mass function
+
+outputs:
+  likelihoods:
+    abundance_like: (float) ln-likelihood
