@@ -145,8 +145,8 @@ class NumberCount:
                 lnlike_this_field+= this_lnlike
             # photo-z: \int dz dN/dxi/dz, choose limits to encompass +/- 4 sigma of photo-z error
             elif self.catalog['redshift_err'][i]>0.:
-                zlo = min((.25, self.catalog['redshift'][i]-4*self.catalog['redshift_err'][i]))
-                zhi = max((self.HMF['z_arr'][-1], self.catalog['redshift'][i]+4*self.catalog['redshift_err'][i]))
+                zlo = max((self.surveyCutRedshift[0], self.catalog['redshift'][i]-4*self.catalog['redshift_err'][i]))
+                zhi = min((self.surveyCutRedshift[1], self.catalog['redshift'][i]+4*self.catalog['redshift_err'][i]))
                 zarr = np.linspace(zlo, zhi, 15)
                 integrand = np.exp(lndNdxi(np.log(zarr), np.log(self.catalog['xi'][i])))[:,0] * norm.pdf(zarr, self.catalog['redshift'][i], self.catalog['redshift_err'][i])
                 this_lnlike = np.log(np.trapz(integrand, zarr))
