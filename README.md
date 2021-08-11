@@ -25,7 +25,8 @@ questions.
 
 * Cluster cosmology constraints and analysis pipeline: Bocquet et al. 2019, DOI 10.3847/1538-4357/ab1f10
 * SPT-SZ cluster catalog: Bleem et al. 2015, DOI 10.1088/0067-0049/216/2/27
-* Weak-lensing dataset from the Hubble Space Telescope: Schrabback et al. 2018, DOI 10.1093/mnras/stx2666
+* Weak-lensing dataset from the Hubble Space Telescope (HST-13): Schrabback et al. 2018, DOI 10.1093/mnras/stx2666
+* Weak-lensing dataset from the Hubble Space Telescope (HST-30): Schrabback et al. 2021, DOI 10.1093/mnras/stab1386
 * Weak-lensing dataset from Magellan/Megacam: Dietrich et al. 2019, DOI 10.1093/mnras/sty3088
 * X-ray Chandra dataset: McDonald et al. 2013, DOI 10.1088/0004-637X/774/1/23
 * X-ray Chandra z>1.2 dataset: McDonald et al. 2017, DOI 10.3847/1538-4357/aa7740
